@@ -13,12 +13,6 @@ public class MyStack <T>  {
     }
 
     public void push(T value){
-//        if (top == stack.length)
-//        {
-//            T [] copy = Arrays.copyOf(stack, stack.length);
-//        }
-//        top++;
-//        stack[top]= value;
         int i = top + 2;
         stack = Arrays.copyOf(stack, i);
         stack[++top] = value;
@@ -37,32 +31,32 @@ public class MyStack <T>  {
         stack = (T[])  new Object[s2.length + s1.length];
         System.arraycopy(s1,0,stack,0,index);
         System.arraycopy(s2,0,stack,index,i);
+        size--;
     }
 
     public void clear(){
         stack = (T[]) new Objects[0];
+        size = 0;
     }
 
-    public int size(){ return ++top;}
+    public int size(){ return size;}
 
     public T peek(){
-        if (top == 0)
+        if(size == 0){
             throw new EmptyStackException();
+        }
 
-        T result = stack[top];
-        return result;
+        return stack[--size];
     }
 
-    public T pop() throws EmptyStackException{
-        if (top == 0)
+    public T pop() {
+        T result = stack[--size];
+        if(size == 0){
             throw new EmptyStackException();
-        T result = stack[top];
-        int i = stack.length-1;
-        T [] a = (T[]) new Object[i];
-        System.arraycopy(stack,0,a, 0, i);
-        stack = Arrays.copyOf(a, top);
+        }
+        T [] a = Arrays.copyOf(stack,size);
+        stack = Arrays.copyOf(a,a.length);
         return result;
-
     }
 }
 

@@ -33,6 +33,7 @@ public class MyArrayList<T> extends AbstractList<T> implements List<T>, RandomAc
 
     public void clear(){
         arrayList = (T[]) new Object[0];
+        size = 0;
     }
 
     public int size(){

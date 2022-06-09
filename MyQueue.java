@@ -31,7 +31,10 @@ public class MyQueue <T>  {
         System.arraycopy(q2,0,queue,index,i);
     }
 
-    public void clear(){queue = (T[]) new Object[0];}
+    public void clear(){
+        queue = (T[]) new Object[0];
+        size = 0;
+    }
 
     public int size(){ return size;}
 
