@@ -7,15 +7,16 @@ public class MyStack <T>  {
     private int size;
 
 
-    public MyStack(int size) {
+    public MyStack() {
         this.stack = (T[])  (new Object[size]);
-        this.size = size;
+        this.size = 0;
     }
 
     public void push(T value){
         int i = top + 2;
         stack = Arrays.copyOf(stack, i);
         stack[++top] = value;
+        size++;
     }
 
     public void remove(int index){
@@ -42,11 +43,12 @@ public class MyStack <T>  {
     public int size(){ return size;}
 
     public T peek(){
+        int i = size;
+        T result = stack[--i];
         if(size == 0){
             throw new EmptyStackException();
         }
-
-        return stack[--size];
+        return result;
     }
 
     public T pop() {
