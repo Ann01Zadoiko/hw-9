@@ -20,18 +20,9 @@ public class MyStack <T>  {
     }
 
     public void remove(int index){
-//        int i = size - index - 1;
-//        System.arraycopy(stack,index+1,stack,index,i);
-//        stack[--size] = null;
-//        return null;
-        int i = top - index ;
-        int s = index + 1;
-        T [] s1 = Arrays.copyOf(stack,index);
-        T [] s2 = (T[])  new Object[i];
-        System.arraycopy(stack,s,s2,0,i);
-        stack = (T[])  new Object[s2.length + s1.length];
-        System.arraycopy(s1,0,stack,0,index);
-        System.arraycopy(s2,0,stack,index,i);
+        int i = size - index - 1;
+        System.arraycopy(stack,index+1,stack,index,i);
+        //stack[--size] = null;
         size--;
     }
 
